@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<control_system>
+    <trip_id>:="Time".UnixTime:</trip_id>
+    <uuid> </uuid>
+    <last_sync>:="Time".CurTime:</last_sync>
+</control_system>

@@ -1,0 +1,47 @@
+<!--Содержимое блеадь-->
+<script type="text/ng-template" id="power_row.html">
+	<div class="col-xs-12 col-sm-6 title">{{ item.title }}</div>
+	<div class="col-xs-5 col-sm-3 value">
+		<span class="right state-off" ng-if="item.status == 0">ВЫКЛ</span>
+		<span class="state-on" ng-if="item.status == 10">ВКЛ</span>
+		<span class="state-on" ng-if="item.status == 2">жди...</span>
+		<span class="state-error" ng-if="item.status == 100">АВАРИЯ</span>
+	</div>
+	<div class="col-xs-7 col-sm-3 buttons">
+		<div class="btn-group" role="group" aria-label="{{ item.name }}">
+		  <button type="button" class="btn btn-default" ng-click="switch(item.power,item.id,1)" ng-class="{'disabled':item.status=='10'||item.status=='2'}">ВКЛ</button>
+		  <button type="button" class="btn btn-default" ng-click="switch(item.power,item.id,0)" ng-class="{'disabled':item.power=='0'||item.status=='2'}">ВЫКЛ</button>
+		</div>
+	</div>
+</script>
+
+<!--ТЕЛО блеадь-->
+<div class="row" ng-controller="PwrCtrl">
+	<div class="col-md-12 col-sm-12 col-lg-8 col-lg-offset-2">
+		<span ng-if="manual==0" class="big">Режим управления питанием: <b>Автоматический</b></span>
+		<span ng-if="manual==1" class="big">Режим управления питанием: <b>Ручной</b></span>
+		<br />
+		<i>Внимание! При выключении системы или при наступлении аварии ручной режим сбрасыватеся на автоматический.</i>
+		<br />
+		<button ng-if="manual==0" type="button" class="btn btn-default" ng-click="switch('MODE_MANUAL',0,1)">Включить ручной режим</button>
+		<button ng-if="manual==1" type="button" class="btn btn-default" ng-click="switch('MODE_MANUAL',0,0)">Включить авто-режим</button>
+		<br />
+	</div>
+	<div class="col-md-12 col-sm-12 col-lg-8 col-lg-offset-2">
+		<h3>Основное</h3>
+		<div ng-repeat="item in central | filter: {switch:true}">
+			<div class="module row" ng-include="'power_row.html'"></div>
+		</div>
+
+		<h3>Контроллеры</h3>
+		<div ng-repeat="item in controllers | filter: {switch:true}">
+					<div class="module row" ng-include="'power_row.html'"></div>
+		</div>
+
+		<h3>Сервисные модули</h3>
+		<div ng-repeat="item in aux | filter: {switch:true}">
+			<div class="module row" ng-include="'power_row.html'"></div>
+		</div>
+
+	</div>
+</div>

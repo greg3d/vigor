@@ -1,0 +1,246 @@
+{
+  "mode": "0",
+  "recording" : "0",
+  "manual" : "0",
+  "modules": [
+    {
+      "id" : "1000",
+      "title" : "Блок ДПС",
+      "status" : "0",
+      "switch" : false
+    },
+    {
+      "id" : "1001",
+      "title" : "Блок синхронизации",
+      "status" : "0",
+      "switch" : false
+    },
+    {
+      "id" : "1002",
+      "title" : "Видео-контроль",
+      "power" : "PowerVideo",
+      "status" : "0",
+      "switch" : true
+    },
+    {
+      "id" : "1003",
+      "title" : "Датчик температуры рельса",
+      "power" : "PowerTemp",
+      "status" : "0",
+      "switch" : true
+    },
+    {
+      "id" : "2001",
+      "title" : "АРМ Видеоконтроль",
+      "power" : "ARM",
+      "status" : "0",
+      "switch" : true
+    },
+    {
+      "id" : "2002",
+      "title" : "Контроллер KLV0",
+      "power" : "KLV0",
+      "status" : "0",
+      "switch" : true
+    },
+    {
+      "id" : "2003",
+      "title" : "Контроллер KLV1",
+      "power" : "KLV1",
+      "status" : "0",
+      "switch" : true
+    },
+    {
+      "id" : "2004",
+      "title" : "Сетевой накопитель",
+      "power" : "NAS",
+      "status" : "0",
+      "switch" : true
+    },
+    {
+      "id" : "3001",
+      "title" : "Нагрев камеры 1",
+      "power" : "PowerHeat1",
+      "status" : "0",
+      "switch" : true
+    },
+    {
+      "id" : "3002",
+      "title" : "Нагрев камеры 2",
+      "power" : "PowerHeat2",
+      "status" : "0",
+      "switch" : true
+    },
+    {
+      "id" : "3003",
+      "title" : "Нагрев камеры 3",
+      "power" : "PowerHeat3",
+      "status" : "0",
+      "switch" : true
+    },
+    {
+      "id" : "3004",
+      "title" : "Нагрев камеры 4",
+      "power" : "PowerHeat4",
+      "status" : "0",
+      "switch" : true
+    },
+    {
+      "id" : "3005",
+      "title" : "Задвижка системы видео-контроля",
+      "power" : "PowerShutter",
+      "status" : "0",
+      "switch" : true
+    },
+    {
+      "id" : "3006",
+      "title" : "Задвижка датчика температуры",
+      "power" : "PowerShutter2",
+      "status" : "0",
+      "switch" : true
+    },
+    {
+      "id" : "3007",
+      "title" : "Включение наддува",
+      "power" : "PowerAir",
+      "status" : "0",
+      "switch" : true
+    },
+    {
+      "id" : "3008",
+      "title" : "Освещение",
+      "power" : "PowerLight",
+      "status" : "0",
+      "switch" : true
+    },
+    {
+      "id" : "3009",
+      "title" : "Вентилятор в стойке",
+      "power" : "PowerFan",
+      "status" : "0",
+      "switch" : true
+    }
+  ],
+  "sensors": [
+     {"id" : "8001",
+      "title" : "Температура камеры 1",
+      "value" : "0",
+      "unit" : "°C",
+      "valid" : "true"
+    },
+   {
+      "id" : "8002",
+      "title" : "Температура камеры 2",
+      "value" : "0",
+      "unit" : "°C",
+      "valid" : "true"
+    },
+     {
+      "id" : "8003",
+      "title" : "Температура камеры 3",
+      "value" : "0",
+      "unit" : "°C",
+      "valid" : "true"
+    },
+     {
+      "id" : "8004",
+      "title" : "Температура камеры 4",
+      "value" : "0",
+      "unit" : "°C",
+      "valid" : "true"
+    },
+     {
+      "id" : "8005",
+      "title" : "Температура стойки",
+      "value" : "0",
+      "unit" : "°C",
+      "valid" : "true"
+    },
+    {
+      "id" : "8006",
+      "title" : "Входное напряжение",
+      "value" : "0",
+      "unit" : "V",
+      "valid" : "true"
+    },
+     {
+      "id" : "8007",
+      "title" : "Выходное напряжение",
+      "value" : "0",
+      "unit" : "V",
+      "valid" : "true"
+    },
+     {
+      "id" : "8009",
+      "title" : "Выходная частота",
+      "value" : "0",
+      "unit" : "Hz",
+      "valid" : "true"
+    },
+    {
+      "id" : "8010",
+      "title" : "Остаток батарей",
+      "value" : "0",
+      "unit" : "%",
+      "valid" : "true"
+    },
+     {
+      "id" : "8011",
+      "title" : "Скорость",
+      "value" : "Остановка",
+      "unit" : " ",
+      "valid" : true,
+      "text" : true
+    }
+
+  ],
+  "dps": {
+    "mode":"0",
+    "dir":"0",
+    "speed":"0"
+  },
+  "settings":{
+    "ModeUpdate":"0",
+    "FanTempON":"30",
+    "FanTempOFF":"25",
+    "BatteryOFF":"50",
+    "TimeToOff":"25",
+    "TemperatureOFF":"40"
+  },
+  "software":[
+    {
+      "title":"state dps",
+      "value":"0"
+    },{
+      "title":"dps active",
+      "value":"0"
+    },{
+      "title":"state gps",
+      "value":"0"
+    },{
+      "title":"gps active",
+      "value":"0"
+    },{
+      "title":"Cam 1",
+      "value":"0"
+    },{
+      "title":"Cam 2",
+      "value":"0"
+    },{
+      "title":"Cam 3",
+      "value":"0"
+    },{
+      "title":"Cam 4",
+      "value":"0"
+    },{
+      "title":"ARM Server",
+      "value":"0"
+    },{
+      "title":"RTSC State",
+      "value":"0"
+    },{
+      "title":"Session State",
+      "value":"0"
+    }
+  ]
+}

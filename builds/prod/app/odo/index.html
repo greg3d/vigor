@@ -1,0 +1,29 @@
+<!--ТЕЛО блеадь-->
+<div class="row" ng-controller="OdoCtrl">
+	<div class="col-xs-12">
+			<ul>
+				<li>Режим работы: 	<span ng-if="fullTree.dps.mode == 1">Имитатор</span>
+									<span ng-if="fullTree.dps.mode == 0">Обычный</span>
+				</li>
+				<li>Скорость имитатора: {{ fullTree.dps.speed}} км/ч</li>
+			</ul>
+
+			<h4>Включение имитатора одометра</h4>
+			<div class="btn-group" role="group" aria-label="Odo1">
+			  <button type="button" class="btn btn-default" ng-click="odoEmul(1)">ON</button>
+			  <button type="button" class="btn btn-default" ng-click="odoEmul(0)">OFF</button>
+			</div>
+
+			<h4>Скорость имитатора одометра</h4>
+			<div class="btn-group" role="group" aria-label="Odo2">
+			  <button type="button" class="btn btn-default" ng-click="odoSpeedUp()">+</button>
+			  <button type="button" class="btn btn-default" ng-click="odoSpeedDown()">-</button>
+			</div>
+
+			<h4>Направление движения имитатора</h4>
+			<div class="btn-group" role="group" aria-label="Odo3">
+			  <button type="button" class="btn btn-default" ng-click="odoDir(1)">вперед</button>
+			  <button type="button" class="btn btn-default" ng-click="odoDir(0)">назад</button>
+			</div>
+	</div>
+</div>

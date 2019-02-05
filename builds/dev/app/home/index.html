@@ -1,0 +1,115 @@
+<script type="text/ng-template" id="main_row.html">
+	{{ item.title }}
+	<span class="right state-off" ng-if="item.status == 0">ВЫКЛ</span>
+	<span class="right state-on" ng-if="item.status == 10">ВКЛ</span>
+	<span class="right state-on" ng-if="item.status == 2">жди...</span>
+	<span class="right state-error" ng-if="item.status == 100">АВАРИЯ</span>
+</script>
+<script type="text/ng-template" id="sensors_row.html">
+	{{ item.title }}
+	<span class="right" class="state-on" ng-class="{'state-na':item.valid==false}">
+	{{ item.value }} {{ item.unit }}
+	</span>
+</script>
+<script type="text/ng-template" id="software_row.html">
+	{{ item.title }}
+	<span class="right state-error" ng-if="item.value == 0">НЕТ</span>
+	<span class="right state-on" ng-if="item.value == 1">ДА</span>
+</script>
+<!--Основное-->
+<div class="row">
+    <!--Системы-->
+	<div class="col-sm-7">
+		<div class="row" >
+			<div class="col-md-6 col-lg-6">
+				<h3 class="main-sys">Центральные</h3>
+				<ul class="diag">
+					<li ng-repeat="item in central" ng-include="'main_row.html'"></li>
+				</ul>
+			</div>
+
+			<div class="col-md-6 col-lg-6">
+				<h3 class="wea-sys">Контроллеры</h3>
+				<ul class="diag">
+					<li ng-repeat="item in controllers" ng-include="'main_row.html'"></li>
+				</ul>
+			</div>
+
+			<div class="col-md-12 col-lg-7">
+				<h3 class="acc-sys">Сервисные</h3>
+				<ul class="diag">
+				<li ng-repeat="item in aux" ng-include="'main_row.html'"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-lg-6">
+				<h3 class="pos-sys">Датчики</h3>
+				<ul class="diag">
+					<li ng-repeat="item in fullTree.sensors" ng-include="'sensors_row.html'"></li>
+				</ul>
+			</div>
+			<div class="col-xs-12 col-lg-6">
+				<h3 class="wea-sys">Программные модули</h3>
+				<ul class="diag">
+					<li ng-repeat="item in fullTree.software" ng-include="'software_row.html'"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!--Кнопки и статусы-->
+	<div class="col-sm-5 col-lg-4 col-lg-offset-1">
+
+		<div class="row">
+			<div class="col-xs-6 col-sm-12 col-md-6">
+				<a class="button-start" ng-class="{'disabled': startDisabled}" ng-click="startMeasure()">СТАРТ</a>
+			</div>
+			<div class="col-xs-6 col-sm-12 col-md-6">
+				<a class="button-stop" ng-class="{'disabled': stopDisabled}" ng-click="stopMeasure()">СТОП</a>
+			</div>
+		</div>
+
+		<div class="status-field online">
+			<div class="server" ng-class="{'active': LinuxOnline==1}">
+				5.xx
+			</div>
+			<div class="server" ng-class="{'active': WinOnline==1}">
+				ПО x-pos
+			</div>
+			<div class="server" ng-class="{'active': ArmOnline==1}">
+				ПО АРМ
+			</div>
+		</div>
+		<div class="status-field" ng-class="{'measure': mode=='10', 'power': mode=='2'||mode=='1','ready':mode=='5', 'off':mode=='0'}">
+			<span ng-if="mode == 0">Ожидание</span>
+			<span ng-if="mode == 2">Запуск...</span>
+			<span ng-if="mode == 3">Ожидаем ПО...</span>
+			<span ng-if="mode == 1">Выключение...</span>
+			<span ng-if="mode == 5">Готов</span>
+			<span ng-if="mode == 8">Останов...</span>
+			<span ng-if="mode == 9">Стартуем...</span>
+			<span ng-if="mode == 10">Измерение</span>
+		</div>
+		<div class="status-group">
+			<div class="status-indicator" ng-class="{'green': manual==0, 'blue': manual==1}">
+				<span ng-if="manual==0">Авто-режим</span>
+				<span ng-if="manual==1">Ручной режим</span>
+			</div>
+			<div class="status-indicator debug" ng-class="{ 'red': fullTree.settings.ModeUpdate == 1 }">Отладка</div>
+			<div class="status-indicator dps" ng-class="{ 'yellow': fullTree.dps.mode == 1 }">Имитатор</div>
+		</div>
+
+
+
+		<div class="row"><br /><br />
+				<div class="col-xs-6 col-sm-12 col-md-6">
+					<a class="button-on" ng-class="{'disabled': onDisabled}" ng-click="powerOn()">Вкл</a>
+				</div>
+				<div class="col-xs-6 col-sm-12 col-md-6">
+					<a class="button-off" ng-class="{'disabled': offDisabled}" ng-click="powerOff()">Выкл</a>
+				</div>
+		</div>
+	</div>
+</div>
+
